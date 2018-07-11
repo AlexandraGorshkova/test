@@ -31,8 +31,6 @@ class EventController: UIViewController, UITableViewDelegate {
     
     
     
-   
-    
   //  eventArray[name.text!] = []
     
     override func viewDidLoad() {

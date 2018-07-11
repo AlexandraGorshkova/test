@@ -37,6 +37,12 @@ class ViewController: UIViewController, UITableViewDataSource {
         table.reloadData()
         
     }
+    override  func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
+        let destVC : RangeControlleer = segue.destination as! RangeControlleer
+        if !detailsEvent.isEmpty{
+            destVC.filtArray = detailsEvent}
+    }
  
 }
 
