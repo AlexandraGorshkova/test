@@ -2,21 +2,17 @@
 //  TableViewCell.swift
 //  Test
 //
-//  Created by Alexandra Gorshkova on 07.07.2018.
+//  Created by Alexandra Gorshkova on 11.07.2018.
 //  Copyright © 2018 Alexandra Gorshkova. All rights reserved.
 //
 
 import UIKit
 
 class TableViewCell: UITableViewCell {
-    
-  //  @IBOutlet weak var cell: UITableViewCell!
 
-  //  @IBOutlet weak var nameCell: UILabel!
-    //@IBOutlet weak var startCell: UILabel!
-    //@IBOutlet weak var finishCell: UILabel!
-    
-/*
+    @IBOutlet weak var finishhh: UILabel!
+    @IBOutlet weak var starttt: UILabel!
+    @IBOutlet weak var label: UILabel!
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -27,5 +23,5 @@ class TableViewCell: UITableViewCell {
 
         // Configure the view for the selected state
     }
-*/
+
 }

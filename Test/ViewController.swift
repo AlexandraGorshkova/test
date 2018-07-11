@@ -8,15 +8,19 @@
 
 import UIKit
 
-class ViewController: UIViewController, UITableViewDataSource {
+
+class ViewController: UIViewController{
+
     
     @IBOutlet weak var table: UITableView!
     
+    @IBOutlet weak var cell: TableViewCell!
     var detailsEvent = [ Event]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-     print(detailsEvent)
+        
+ //    print(detailsEvent)
 
   
         // Do any additional setup after loading the view, typically from a nib.
@@ -38,16 +42,27 @@ class ViewController: UIViewController, UITableViewDataSource {
         
     }
     override  func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        
-        let destVC : RangeControlleer = segue.destination as! RangeControlleer
+        if (segue.identifier == "Present") {
+            let destVC : RangeControlleer = segue.destination as! RangeControlleer //segue.destination as! RangeControlleer
         if !detailsEvent.isEmpty{
             destVC.filtArray = detailsEvent}
+        }
     }
- 
 }
 
 
- extension ViewController: UITableViewDelegate {
+extension ViewController: UITableViewDelegate , UITableViewDataSource {
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell : TableViewCell = tableView.dequeueReusableCell( withIdentifier: "Cell", for: indexPath) as! TableViewCell
+        
+        cell.label.text = detailsEvent[indexPath.row].name
+        cell.starttt.text = String(detailsEvent[indexPath.row].start!)
+        cell.finishhh.text = String(detailsEvent[indexPath.row].finish!)
+        
+        
+        return cell
+    }
+    
     
     func numberOfSections(in tableView: UITableView) -> Int {
         return 1
@@ -56,24 +71,20 @@ class ViewController: UIViewController, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return detailsEvent.count
     }
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
     
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        
-        let cell : UITableViewCell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)// as? UITableView
-        
-       // cell.textLabel?.text = "ggg"
-        cell.textLabel?.text = detailsEvent[indexPath.row].name
-        
-  //      let srt : String? = String( detailsEvent[indexPath.row].start) as! String
-      //  cell.detailTextLabel?.text = String( detailsEvent[indexPath.row].start!)+".."+String( detailsEvent[indexPath.row].finish!)
-        
-        //detailsEvent[indexPath.row].start
-      //  name .text = detailsEvent[indexPath.row].name
-      //  cell.name.text
-      //  cell.StartCell.text = "1"
-     //   cell.FinishCell.text = "3"
-        
-        return cell
     }
+ /*
+     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) ->
+        UITableViewCell  {
+        
+        let cell : UITableViewCell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) //as! TableViewCell
+         
+       // cell.eventtt.text = detailsEvent[indexPath.row].name
+
+        cell.textLabel?.text = detailsEvent[indexPath.row].name
+       
+        return cell
+    } */
 }
 
